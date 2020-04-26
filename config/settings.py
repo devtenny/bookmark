@@ -122,5 +122,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]  # settings.STATICFILES_DIRS 변수 추가
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_files')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
