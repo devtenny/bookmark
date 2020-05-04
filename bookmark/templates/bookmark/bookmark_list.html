@@ -21,7 +21,8 @@
         {% for bookmark in object_list %}  {# 맥락변수 이름을 따로 지정하지 않았지만 CBV 방식은 정해져있음 #}
             <tr>
                 <td>
-                    {{ forloop.counter }}  {# 1부터 증가하는 번호 생김 #}
+                    <!--{{ forloop.counter }}  {# 1부터 증가하는 번호 생김 #}-->
+                    {{ bookmark.id }}  {# DB 아이디값으로 지정 #}
                 </td>
                 <td>
                     <a href="{% url 'detail' pk=bookmark.id %}"> {{ bookmark.site_name }}</a>
