@@ -25,8 +25,8 @@ SECRET_KEY = '6oqt&g39wsu_340(-zc3pv_a++^3sdwp^x6fcl!)ng4v6%)6jp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True  # 이 부분은 True로 설정해도 배포 가능함
 
-# ALLOWED_HOSTS = ['*']  # 이 부분은 반드시 지정해야 배포 가능함!!!
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']  # 이 부분은 반드시 지정해야 배포 가능함!!!
+# ALLOWED_HOSTS = []
 
 
 # Application definition
