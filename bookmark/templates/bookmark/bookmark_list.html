@@ -3,70 +3,76 @@
 {% block title %}북마크 보기{% endblock %}
 
 {% block content %}
-<div class="btn-group">
-    <a href="{% url 'add' %}" class="btn btn-info">Add Bookmark</a>
-</div>
-<p></p>
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Site</th>
-            <th scope="col">URL</th>
-            <th scope="col">Modify</th>
-            <th scope="col">Delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for bookmark in object_list %}  {# 맥락변수 이름을 따로 지정하지 않았지만 CBV 방식은 정해져있음 #}
+<div class="card">
+    <h2 id="jua" class="card-header">목록보기</h2>
+    <div class="card-body">
+        <div class="btn-group">
+            <a id="jua" href="{% url 'add' %}" class="btn btn-info">Add Bookmark</a>
+        </div>
+        <p></p>
+        <table class="table">
+            <thead>
             <tr>
-                <td>
-                    <!--{{ forloop.counter }}  {# 1부터 증가하는 번호 생김 #}-->
-                    {{ bookmark.id }}  {# DB 아이디값으로 지정 #}
-                </td>
-                <td>
-                    <a href="{% url 'detail' pk=bookmark.id %}"> {{ bookmark.site_name }}</a>
-                </td>
-                <td>
-                    <a href="{{ bookmark.url }}" target="_blank">{{ bookmark.url }}</a>
-                </td>
-                <td><a href="{% url 'update' pk=bookmark.id %}" class="btn btn-success btn-sm">Modify</a></td>
-                <td><a href="{% url 'delete' pk=bookmark.id %}" class="btn btn-danger btn-sm">Delete</a></td>
+                <th id="jua" scope="col">#</th>
+                <th id="jua" scope="col">Site</th>
+                <th id="jua" scope="col">URL</th>
+                <th id="jua" scope="col">Modify</th>
+                <th id="jua" scope="col">Delete</th>
             </tr>
-        {% endfor %}
-    </tbody>
-</table>
-{% endblock %}
+            </thead>
+            <tbody>
+            {% for bookmark in object_list %} {# 맥락변수 이름을 따로 지정하지 않았지만 CBV 방식은 정해져있음 #}
+            <tr>
+                <td id="jua">
+                    <!--{{ forloop.counter }}  {# 1부터 증가하는 번호 생김 #}-->
+                    {{ bookmark.id }} {# DB 아이디값으로 지정 #}
+                </td>
+                <td>
+                    <a id="nanum" href="{% url 'detail' pk=bookmark.id %}"> {{ bookmark.site_name }}</a>
+                </td>
+                <td>
+                    <a id="nanum" href="{% url 'detail' pk=bookmark.id %}">{{ bookmark.url }}</a>
+                </td>
+                <td><a id="jua" href="{% url 'update' pk=bookmark.id %}" class="btn btn-success btn-sm">Modify</a></td>
+                <td><a id="jua" href="{% url 'delete' pk=bookmark.id %}" class="btn btn-danger btn-sm">Delete</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% endblock %}
 
-{% block pagination %}
-    {% if is_paginated %}
-    <ul class="pagination justify-content-center pagination-sm">
-        <!-- 이전 -->
-        {% if page_obj.has_previous %}  {# 이전 페이지가 있으면 #}
+        {% block pagination %}
+        {% if is_paginated %}
+        <ul class="pagination justify-content-center pagination-sm">
+            <!-- 이전 -->
+            {% if page_obj.has_previous %} {# 이전 페이지가 있으면 #}
             <li class="page-item">
-              <a class="page-link" href="{% url 'list' %}?page={{ page_obj.previous_page_number }}" tabindex="-1">Previous</a>
+                <a id="nanum" class="page-link" href="{% url 'list' %}?page={{ page_obj.previous_page_number }}"
+                   tabindex="-1">이전</a>
             </li>
-        {% else %}
+            {% else %}
             <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1">Previous</a>
+                <a id="nanum" class="page-link" href="#" tabindex="-1">이전</a>
             </li>
-        {% endif %}
-        <!-- 페이지네이션 숫자 -->
-        {% for object in page_obj.paginator.page_range %}
+            {% endif %}
+            <!-- 페이지네이션 숫자 -->
+            {% for object in page_obj.paginator.page_range %}
             <li class="page-item {% if page_obj.number == forloop.counter %}disabled{% endif %}">
-                <a class="page-link" href="{{ request.path }}?page={{ forloop.counter }}">{{ forloop.counter }}</a>
+                <a id="nanum" class="page-link" href="{{ request.path }}?page={{ forloop.counter }}">{{ forloop.counter }}</a>
             </li>
-        {% endfor %}
-        <!-- 다음 -->
-        {% if page_obj.has_next %}  {# 다음 페이지가 있으면 #}
+            {% endfor %}
+            <!-- 다음 -->
+            {% if page_obj.has_next %} {# 다음 페이지가 있으면 #}
             <li class="page-item">
-              <a class="page-link" href="{% url 'list' %}?page={{ page_obj.next_page_number }}">Next</a>
+                <a id="nanum" class="page-link" href="{% url 'list' %}?page={{ page_obj.next_page_number }}">다음</a>
             </li>
-        {% else %}
+            {% else %}
             <li class="page-item disabled">
-                <a class="page-link" href="#">Next</a>
+                <a id="nanum" class="page-link" href="#">다음</a>
             </li>
+            {% endif %}
+        </ul>
         {% endif %}
-    </ul>
-    {% endif %}
+    </div>
+</div>
 {% endblock %}

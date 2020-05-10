@@ -3,10 +3,17 @@
 {% block title %}삭제 확인{% endblock %}
 
 {% block content %}
-<form action="" method="post">
-    {% csrf_token %}
-    <div class="alert alert-danger">북마크 {{object}}"를 삭제하시겠습니까?</div>
-    <input type="submit" value="Delete" class="btn btn-danger">
-    {# 취소 버튼도 추가해보자 #}
-</form>
+<div class="card">
+    <h2 id="jua" class="card-header">삭제하기</h2>
+    <div class="card-body">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div id="nanum" class="alert alert-danger">
+                삭제할 북마크<br>이름: {{bookmark.site_name}}<br>주소: {{ bookmark.url }}<br><br>삭제하시겠습니까?
+            </div>
+            <input id="jua" type="submit" value="Delete" class="btn btn-danger">
+            {# 취소 버튼도 추가해보자 #}
+        </form>
+    </div>
+</div>
 {% endblock %}

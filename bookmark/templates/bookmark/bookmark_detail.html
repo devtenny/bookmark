@@ -3,7 +3,19 @@
 {% block title %}상세보기{% endblock %}
 
 {% block content %}
-{{ object.site_name }}  {# 맥락변수 기본명 object, pk를 자동으로 가짐 #}
-<br>
-{{ object.url }}
+<div class="card">
+    <h2 id="jua" class="card-header">상세보기</h2>
+    <div class="card-body">
+        <a id="nanum" href="{% url 'list' %}"><i class="fas fa-arrow-left"></i> 뒤로가기</a>
+
+        <p id="jua" style="font-size: 30px">
+            <br>
+            {{ object.site_name }} {# 맥락변수 기본명 object, pk를 자동으로 가짐 #}
+        </p>
+
+        <p id="nanum">
+            <a id="nanum" href="{{ bookmark.url }}" target="_blank">{{ bookmark.url }}</a>
+        </p>
+    </div>
+</div>
 {% endblock %}

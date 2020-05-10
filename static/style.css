@@ -1,3 +1,13 @@
 body {
     width: 100%;
+    background: url("image/bookmark.png") no-repeat fixed left top;
+    background-size: 30%;
+}
+
+#jua {
+    font-family: 'Jua', sans-serif;
+}
+
+#nanum {
+    font-family: 'Nanum Gothic', sans-serif;
 }
